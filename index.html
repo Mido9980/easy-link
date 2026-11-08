@@ -10,13 +10,16 @@
 <body>
 <header>
   <div class="brand"><span>🔗</span><b>Easy</b><i>Link</i></div>
-  <span class="pill" id="statsPill">0 رابط · 0 نقرة</span>
+  <div class="hact">
+    <span class="pill" id="statsPill">0 رابط · 0 نقرة</span>
+    <button class="iconbtn" id="btnSettings" type="button" aria-label="إعدادات قاعدة البيانات">⚙️</button>
+  </div>
 </header>
 
 <main>
   <section class="card hero">
-    <h1>اختصر أي رابط في ثانية</h1>
-    <p class="sub">الصق لينك البرنامج واضغط الزرار. هيطلعلك لينك قصير جاهز للنسخ.</p>
+    <h1>الصق لينك برنامجك واختصره</h1>
+    <p class="sub">لينك قصير جاهز للنسخ، مع عدّاد نقرات و QR. من غير تسجيل.</p>
     <div class="mk">
       <input id="long" dir="ltr" placeholder="الصق اللينك هنا" autocomplete="off" inputmode="url">
       <button id="go" class="primary" type="button">اختصر الرابط</button>
@@ -25,15 +28,55 @@
   </section>
 
   <section class="card">
-    <div class="cardhead"><h2>روابطك</h2><button class="mini" id="refresh" type="button">تحديث</button></div>
+    <div class="cardhead">
+      <h2>روابطك</h2>
+      <div class="hact">
+        <span class="pill" id="modeTag">جاري…</span>
+        <button class="mini" id="refresh" type="button">تحديث</button>
+      </div>
+    </div>
     <div id="list" class="list"><p class="hint">جاري التحميل…</p></div>
   </section>
-
-  <section class="card note">
-    <h3>ملاحظة صريحة</h3>
-    <p class="hint">الرابط الحالي شكله طويل نسبياً لأنه على سيرفر التطبيق. لو عندك دومين (زي go.msr.com) أقدر أوصّله بحيث يبقى <span dir="ltr">go.msr.com/quran</span> زي بيلي بالظبط.</p>
-  </section>
 </main>
+
+<div class="sheet" id="setSheet">
+  <div class="sheetbody">
+    <div class="cardhead"><b>قاعدة البيانات</b><button class="mini" id="setClose" type="button">إغلاق</button></div>
+    <label class="lbl">مكان الحفظ</label>
+    <select id="setMode">
+      <option value="cloud">سحابة EASY CODE (جاهز فوراً)</option>
+      <option value="supabase">Supabase (قاعدتك)</option>
+      <option value="custom">API خاص بك</option>
+      <option value="local">على الجهاز فقط</option>
+    </select>
+
+    <div id="panCloud" class="pan">
+      <p class="hint">بتشتغل من غير أي إعداد. الروابط بتتخزن في قاعدة EASY CODE ومتاحة من أي جهاز.</p>
+    </div>
+
+    <div id="panSupa" class="pan hidden">
+      <p class="hint">شغّل الجملة دي في SQL Editor عند سوبابيز أول مرة، وبعدها حط البيانات هنا.</p>
+      <button class="mini" id="copySql" type="button">نسخ SQL الجدول</button>
+      <input id="sbUrl" dir="ltr" placeholder="https://xxxx.supabase.co">
+      <input id="sbKey" dir="ltr" placeholder="anon public key">
+      <input id="sbTable" dir="ltr" placeholder="links">
+    </div>
+
+    <div id="panCustom" class="pan hidden">
+      <input id="cCreate" dir="ltr" placeholder="POST create endpoint">
+      <input id="cList" dir="ltr" placeholder="GET list endpoint">
+      <input id="cGet" dir="ltr" placeholder="GET resolve endpoint (use {code})">
+      <input id="cToggle" dir="ltr" placeholder="POST toggle endpoint">
+      <input id="cDelete" dir="ltr" placeholder="POST delete endpoint">
+    </div>
+
+    <div id="panLocal" class="pan hidden">
+      <p class="hint">الروابط بتتخزن في المتصفح بس. تنفع للتجربة، ومش هتفتح من جهاز تاني.</p>
+    </div>
+
+    <button class="primary" id="setSave" type="button">حفظ الإعدادات</button>
+  </div>
+</div>
 
 <div class="sheet" id="qrSheet">
   <div class="sheetbody">
