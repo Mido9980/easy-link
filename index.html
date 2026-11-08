@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A0E14">
+<title>EASY LINK — مختصر الروابط</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span>🔗</span><b>Easy</b><i>Link</i></div>
+  <span class="pill" id="statsPill">0 رابط · 0 نقرة</span>
+</header>
+
+<main>
+  <section class="card hero">
+    <h1>اختصر أي رابط في ثانية</h1>
+    <p class="sub">الصق لينك البرنامج واضغط الزرار. هيطلعلك لينك قصير جاهز للنسخ.</p>
+    <div class="mk">
+      <input id="long" dir="ltr" placeholder="الصق اللينك هنا" autocomplete="off" inputmode="url">
+      <button id="go" class="primary" type="button">اختصر الرابط</button>
+    </div>
+    <div id="result" class="result hidden"></div>
+  </section>
+
+  <section class="card">
+    <div class="cardhead"><h2>روابطك</h2><button class="mini" id="refresh" type="button">تحديث</button></div>
+    <div id="list" class="list"><p class="hint">جاري التحميل…</p></div>
+  </section>
+
+  <section class="card note">
+    <h3>ملاحظة صريحة</h3>
+    <p class="hint">الرابط الحالي شكله طويل نسبياً لأنه على سيرفر التطبيق. لو عندك دومين (زي go.msr.com) أقدر أوصّله بحيث يبقى <span dir="ltr">go.msr.com/quran</span> زي بيلي بالظبط.</p>
+  </section>
+</main>
+
+<div class="sheet" id="qrSheet">
+  <div class="sheetbody">
+    <b id="qrTitle">QR</b>
+    <img id="qrImg" alt="QR">
+    <span class="short" id="qrShort" dir="ltr"></span>
+    <button class="ghost" id="qrClose" type="button">إغلاق</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
